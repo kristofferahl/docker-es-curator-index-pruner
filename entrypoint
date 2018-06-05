@@ -1,5 +1,7 @@
 #!/bin/sh
 
-export ES_BASIC_AUTH="${ES_USERNAME}:${ES_PASSWORD}"
+if [ "${ES_USERNAME}:${ES_PASSWORD}" != ":" ]; then
+  export ES_BASIC_AUTH="${ES_USERNAME}:${ES_PASSWORD}"
+fi
 
 /usr/bin/curator "$@"

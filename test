@@ -34,8 +34,8 @@ fi
 docker run --rm \
   -e ES_HOST="${ES_HOST:?}" \
   -e ES_PORT=${ES_PORT:?} \
-  -e ES_USERNAME="${ES_USERNAME:?}" \
-  -e ES_PASSWORD="${ES_PASSWORD:?}" \
+  -e ES_USERNAME="${ES_USERNAME}" \
+  -e ES_PASSWORD="${ES_PASSWORD}" \
   -e ES_USE_SSL=${ES_USE_SSL:?} \
   -e ES_SSL_NO_VALIDATE=${ES_SSL_NO_VALIDATE:?} \
   -e CURATOR_LOGLEVEL=${CURATOR_LOGLEVEL:?} \
