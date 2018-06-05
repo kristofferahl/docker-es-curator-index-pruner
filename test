@@ -1,28 +1,38 @@
 #!/usr/bin/env bash
 
-export ENDPOINT
-export ACCESS_KEY_ID
-export SECRET_ACCESS_KEY
-export BASIC_AUTH_USER
-export BASIC_AUTH_PASSWORD
+export ES_HOST
+export ES_PORT
+export ES_BASIC_AUTH
+export ES_USE_SSL
+export ES_SSL_NO_VALIDATE
+export INDEX_OLDER_THAN_DAYS
+export INDEX_PREFIX
 
-ENDPOINT=''
-ACCESS_KEY_ID=''
-SECRET_ACCESS_KEY=''
-BASIC_AUTH_USER='kibana'
-BASIC_AUTH_PASSWORD='kibana'
+ES_HOST=''
+ES_PORT=9200
+ES_BASIC_AUTH='kibana:kibana'
+ES_USE_SSL=False
+ES_SSL_NO_VALIDATE=True
+INDEX_OLDER_THAN_DAYS=''
+INDEX_PREFIX=''
 
-if [[ -f ./.env ]]; then
-  echo "Sourcing .env file"
-  # shellcheck disable=SC1091
-  source ./.env
+declare name="${1:?'A name must be given (used for .env files)'}"
+declare dotenv_file="./.env.${name:?}"
+if [[ -f ${dotenv_file:?} ]]; then
+  echo "Sourcing ${dotenv_file:?} file"
+  # shellcheck source=/dev/null
+  source "${dotenv_file:?}"
+else
+  echo "No .env file found! (${dotenv_file:?})"
+  exit 1
 fi
 
 docker run --rm \
-  -e AWS_ACCESS_KEY_ID="${ACCESS_KEY_ID:?}" \
-  -e AWS_SECRET_ACCESS_KEY="${SECRET_ACCESS_KEY:?}" \
-  -e USER="${BASIC_AUTH_USER:?}" \
-  -e PASSWORD="${BASIC_AUTH_PASSWORD:?}" \
-  -p 9200:9200 \
-  kristofferahl/es-curator-index-pruner:latest \
-  "${ENDPOINT:?}"
+  -e ES_HOST="${ES_HOST:?}" \
+  -e ES_PORT=${ES_PORT:?} \
+  -e ES_BASIC_AUTH="${ES_BASIC_AUTH:?}" \
+  -e ES_USE_SSL=${ES_USE_SSL:?} \
+  -e ES_SSL_NO_VALIDATE=${ES_SSL_NO_VALIDATE:?} \
+  -e INDEX_OLDER_THAN_DAYS="${INDEX_OLDER_THAN_DAYS}" \
+  -e INDEX_PREFIX="${INDEX_PREFIX}" \
+kristofferahl/es-curator-index-pruner:latest
