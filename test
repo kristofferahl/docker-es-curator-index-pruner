@@ -2,7 +2,8 @@
 
 export ES_HOST
 export ES_PORT
-export ES_BASIC_AUTH
+export ES_USERNAME
+export ES_PASSWORD
 export ES_USE_SSL
 export ES_SSL_NO_VALIDATE
 export INDEX_OLDER_THAN_DAYS
@@ -10,7 +11,8 @@ export INDEX_PREFIX
 
 ES_HOST=''
 ES_PORT=9200
-ES_BASIC_AUTH='kibana:kibana'
+ES_USERNAME='kibana'
+ES_PASSWORD='kibana'
 ES_USE_SSL=False
 ES_SSL_NO_VALIDATE=True
 INDEX_OLDER_THAN_DAYS=''
@@ -30,7 +32,8 @@ fi
 docker run --rm \
   -e ES_HOST="${ES_HOST:?}" \
   -e ES_PORT=${ES_PORT:?} \
-  -e ES_BASIC_AUTH="${ES_BASIC_AUTH:?}" \
+  -e ES_USERNAME="${ES_USERNAME:?}" \
+  -e ES_PASSWORD="${ES_PASSWORD:?}" \
   -e ES_USE_SSL=${ES_USE_SSL:?} \
   -e ES_SSL_NO_VALIDATE=${ES_SSL_NO_VALIDATE:?} \
   -e INDEX_OLDER_THAN_DAYS="${INDEX_OLDER_THAN_DAYS}" \

@@ -8,7 +8,8 @@ Supports the following environment variables (defaults inside parenthesis):
 
 - ES_HOST () - hostname of ES
 - ES_PORT () - the port to connect to
-- ES_BASIC_AUTH () - user:password
+- ES_USERNAME () - basic auth user
+- ES_PASSWORD () - basic auth password
 - ES_USE_SSL (True) - connect using SSL
 - ES_SSL_NO_VALIDATE (False) - skip certificate validation
 - INDEX_OLDER_THAN_DAYS (`14`) - indices older than this will be pruned
