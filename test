@@ -6,6 +6,7 @@ export ES_USERNAME
 export ES_PASSWORD
 export ES_USE_SSL
 export ES_SSL_NO_VALIDATE
+export CURATOR_LOGLEVEL
 export INDEX_OLDER_THAN_DAYS
 export INDEX_PREFIX
 
@@ -15,6 +16,7 @@ ES_USERNAME='kibana'
 ES_PASSWORD='kibana'
 ES_USE_SSL=False
 ES_SSL_NO_VALIDATE=True
+CURATOR_LOGLEVEL='INFO'
 INDEX_OLDER_THAN_DAYS=''
 INDEX_PREFIX=''
 
@@ -36,6 +38,7 @@ docker run --rm \
   -e ES_PASSWORD="${ES_PASSWORD:?}" \
   -e ES_USE_SSL=${ES_USE_SSL:?} \
   -e ES_SSL_NO_VALIDATE=${ES_SSL_NO_VALIDATE:?} \
+  -e CURATOR_LOGLEVEL=${CURATOR_LOGLEVEL:?} \
   -e INDEX_OLDER_THAN_DAYS="${INDEX_OLDER_THAN_DAYS}" \
   -e INDEX_PREFIX="${INDEX_PREFIX}" \
-kristofferahl/es-curator-index-pruner:latest
+  kristofferahl/es-curator-index-pruner:latest

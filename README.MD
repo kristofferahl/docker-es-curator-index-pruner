@@ -12,5 +12,6 @@ Supports the following environment variables (defaults inside parenthesis):
 - ES_PASSWORD () - basic auth password
 - ES_USE_SSL (True) - connect using SSL
 - ES_SSL_NO_VALIDATE (False) - skip certificate validation
+- CURATOR_LOGLEVEL (INFO) - the log level used by curator
 - INDEX_OLDER_THAN_DAYS (`14`) - indices older than this will be pruned
 - INDEX_PREFIX (`logstash-`) - indices with the following prefix will be pruned

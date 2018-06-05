@@ -1,0 +1,5 @@
+#!/bin/sh
+
+export ES_BASIC_AUTH="${ES_USERNAME}:${ES_PASSWORD}"
+
+/usr/bin/curator "$@"

@@ -7,6 +7,9 @@ client:
   port: ${ES_PORT}
   use_ssl: ${ES_USE_SSL:True}
   ssl_no_validate: ${ES_SSL_NO_VALIDATE:False}
-  http_auth: ${ES_USERNAME}:${ES_PASSWORD}
+  http_auth: ${ES_BASIC_AUTH}
   timeout: 30
   master_only: False
+
+logging:
+  loglevel: ${CURATOR_LOGLEVEL:INFO}
