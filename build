@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+declare commit
+declare version
+
+commit="$(git rev-parse --verify HEAD)"
+version="1.0.0-${commit:0:8}"
+
+docker build -t "kristofferahl/es-curator-index-pruner:${version:?}" .
+docker tag "kristofferahl/es-curator-index-pruner:${version:?}" kristofferahl/es-curator-index-pruner:latest
