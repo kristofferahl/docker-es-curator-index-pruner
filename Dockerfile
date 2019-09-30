@@ -1,4 +1,4 @@
-FROM bobrik/curator:5.5.1
+FROM bobrik/curator:5.7.6
 
 COPY entrypoint /
 COPY curator.yml /
