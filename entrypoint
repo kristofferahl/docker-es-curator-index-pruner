@@ -4,4 +4,11 @@ if [ "${ES_USERNAME}:${ES_PASSWORD}" != ":" ]; then
   export ES_BASIC_AUTH="${ES_USERNAME}:${ES_PASSWORD}"
 fi
 
-/usr/bin/curator "$@"
+if /usr/bin/curator "$@"; then
+  if [ ! -z "${EXIT_WEBHOOK_URL}" ]; then
+    echo "Invoking webhook ${EXIT_WEBHOOK_URL:?}"
+    wget "${EXIT_WEBHOOK_URL:?}" -O /dev/null
+  else
+    echo 'No exit webhook specified (EXIT_WEBHOOK_URL)'
+  fi
+fi

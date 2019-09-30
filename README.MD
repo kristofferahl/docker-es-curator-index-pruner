@@ -15,3 +15,4 @@ Supports the following environment variables (defaults inside parenthesis):
 - CURATOR_LOGLEVEL (INFO) - the log level used by curator
 - INDEX_OLDER_THAN_DAYS (`14`) - indices older than this will be pruned
 - INDEX_PREFIX (`logstash-`) - indices with the following prefix will be pruned
+- EXIT_WEBHOOK_URL () - the webhook to call on completion
