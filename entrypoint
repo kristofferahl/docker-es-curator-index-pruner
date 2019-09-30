@@ -7,7 +7,7 @@ fi
 if /usr/bin/curator "$@"; then
   if [ ! -z "${EXIT_WEBHOOK_URL}" ]; then
     echo "Invoking webhook ${EXIT_WEBHOOK_URL:?}"
-    wget "${EXIT_WEBHOOK_URL:?}" -O /dev/null
+    curl --retry 3 --silent "${EXIT_WEBHOOK_URL:?}" >/dev/null
   else
     echo 'No exit webhook specified (EXIT_WEBHOOK_URL)'
   fi
